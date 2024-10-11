@@ -14,10 +14,12 @@ from pathlib import Path
 import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(env_file=str(BASE_DIR / "asemKenitra" / ".venv"))
 
-SECRET_KEY = "django-insecure-k@%c8^#e*9)5vv_iid^#*2_)(z79(sy%axc(%8w3r(=5f=hc2x"
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1']
+SECRET_KEY = env("SECRET_KEY")
+DEBUG = env.bool("DEBUG")
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -120,3 +122,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.joinpath('media/')
+
+
+print(f"la valeur est {ALLOWED_HOSTS}")
