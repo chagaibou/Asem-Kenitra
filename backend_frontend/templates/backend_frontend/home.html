@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5 pt-5 " xmlns="http://www.w3.org/1999/html">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">ASEM KENITRA :<span class="text-muted">
+        L'Association des Stagiaires, Élèves et Étudiants maliens au Maroc, la section de Kénitra.</span></h2>
+        <p class="lead">L'ASEM regroupe tous les stagiaires, étudiants et élèves maliens du maroc. Elle a des sections dans les différentes villes du royaume. Elle a vu le jour en septembre 1996 au sein de l'ambassade du Mali sise à Rabat. C'est une association amicale, apolitique, areligieuse, démocratique, indépendante et souveraine. Elle a pour dévise:
+Unité - Travail - Solidarité</p>
+      </div>
+      <div class="col-md-5">
+       <img src="{% static 'backend_frontend/img/asem.jpg' %}" alt="" width="500" height="500">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+     <div class="col-12">
+         <h2 class="text-center">Missions</h2>
+         <p>L'ASEM Kénitra se propose comme missions:
+         <ul>
+             <li>Représenter ses membres et défendre leurs droits et intérêts moraux, sociaux, matériels et économiques auprès des autorités Maliennes et Marocaines</li>
+             <li>Rassembler tous ses membres sans distinction de race, d’ethnie, de sexe, de religion, d’opinion, de statut et de rang social.</li>
+             <li>Renforcer l’unité, la fraternité, l’amitié, l’entraide entre ses membres ;</li>
+             <li>Faciliter l’échange entre ses membres et les instances universitaires, le monde professionnel et surtout les pouvoir publics (au Maroc et au Mali) et les particuliers ; </li>
+             <li>Œuvrer pour le plein épanouissement de l’ensemble de ses membres à travers l’organisation et des activités scientifiques, sociales, culturelles et sportives ; </li>
+             <li>Accueillir en coordination avec l’Ambassade de la République du Mali les nouveaux Stagiaires, Etudiants et Elèves Maliens et les orientés ;</li>
+            <li>Soutenir et apporter son soutien à tous ses membres et si possible tout ressortissant maliens en situation difficile ;</li>
+            <li>Informer l’opinion nationale (Malienne) des conditions de vie de ses membres au Maroc ;</li>
+        </ul>
+         </p>
+     </div>
+        <hr class="featurette-divider">
+     <div class="row featurette mt-5">
+         <h2>Le Bureau</h2>
+          <img src="{% static 'backend_frontend/img/Bureau.jpeg' %}" width="500" height="500"  class="d-block w-100" alt="...">
+     </div><hr class="featurette-divider">
+
+    <div class="row featurette mt-5">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Notre Dernier Évenement :</span></h2>
+        <h2><strong>{{last.titre}}</strong></span></h2>
+        <p class="lead">{{ last.description|truncatewords:30 }}</p>
+          <a href="{% url 'evenement-detail' last.id%}" class="btn btn-primary">Voir l'évenement</a>
+
+      </div>
+      <div class="col-md-5">
+        <img class="card-img-top img-fluid" src="{{ last.image.url }}" class="card-img-top" alt="..."
+        style="height: 500px ; width: 500px;object-fit: cover;">
+
+      </div>
+
+    </div>
+
+    <hr class="featurette-divider">
+
+       <h2>Nos Partenaires</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-5">
+        <div class="col">
+          <div class="card shadow-sm">
+               <img src="{% static 'backend_frontend/img/asem.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+               <img src="{% static 'backend_frontend/img/asem.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+               <img src="{% static 'backend_frontend/img/asem.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+        </div>
+
+
+    <!-- /END THE FEATURETTES -->
+
+  </div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container d-flex flex-column align-items-center" style="margin-top:100px;">
+    <h1 class="text-center">{{ event.titre }}</h1><br>
+    <img src="{{ event.image.url }}" width="500" height="500" alt="..." class="my-auto">
+    <p class="mt-5">{{ event.description }}</p>
+</div>
+
+
+
+
+{% endblock content %}

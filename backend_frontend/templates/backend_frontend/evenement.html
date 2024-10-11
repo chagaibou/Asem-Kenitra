@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<main class="mt-5">
+
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Nos Evenenements</h1>
+    <p class="lead">Découvrez et participez aux événements dynamiques de notre communauté !</p>
+  </div>
+</div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+
+      <div class="row">
+   {% for event in events %}
+        <div class="col-12 col-md-4 mt-5">
+        <div class="card" >
+        <img class="card-img-top img-fluid" src="{{ event.image.url }}" class="card-img-top" alt="..."
+        style="height: 400px ;object-fit: cover;">
+         <div class="card-body">
+          <h5 class="card-title">{{ event.titre}}</h5>
+              <a href="{% url 'evenement-detail' event.id%}" class="btn btn-primary">Voir plus</a>
+        </div>
+       </div>
+          </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+
+{% endblock content %}
