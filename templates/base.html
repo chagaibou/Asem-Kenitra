@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet" id="fontawesome-css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Lora&display=swap" rel="stylesheet">
     <style>
-        body {
-    font-family: 'Open Sans', sans-serif;
+/* Taille de police pour les ordinateurs et les tablettes */
+body {
+    font-size: 20px;  /* Taille de base */
 }
 
-h1, h2, h3 {
-    font-family: 'Lora', serif;
+h1 {
+    font-size: 32px;  /* Taille de titre principale */
 }
+
+h2 {
+    font-size: 28px;  /* Taille de sous-titre */
+}
+
+/* Taille de police pour les téléphones (écrans de moins de 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;  /* Taille de base réduite pour le mobile */
+    }
+
+    h1 {
+        font-size: 24px;  /* Taille de titre réduite pour le mobile */
+    }
+
+    h2 {
+        font-size: 20px;  /* Taille de sous-titre réduite pour le mobile */
+    }
+}
+
 
 
     </style>
@@ -22,41 +44,46 @@ h1, h2, h3 {
 <body>
 
     <header>
-        <nav class="navbar navbar-dark navbar-expand-md fixed-top " style="background-color:#2F2F2F">
-    <img src="{% static 'backend_frontend/img/asem.jpg' %}" alt="Logo" style="height: 80px;">     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4" style="background-color:#2F2F2F">
+    <img src="{% static 'backend_frontend/img/asem.jpg' %}" alt="Logo" style="height: 80px;">
+
+    <!-- Bouton pour afficher/cacher la navbar sur les petits écrans -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">
-          Accueil
-          <span class="sr-only">(current)</span>
-        </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'evenement' %}">Evénements</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="#">Bourses</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'infos' %}">Infos Administratives</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="#">Galerie</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">À propos</a>
-        </li>
-      </ul>
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+
+    <!-- Navbar collapsible -->
+    <div class="collapse navbar-collapse mr-auto" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link active" href="{% url 'home' %}">
+                    Accueil
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'evenement' %}">Evénements</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Bourses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'infos' %}">Infos Administratives</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Galerie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">À propos</a>
+            </li>
+        </ul>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </div>
-  </nav>
-    </header>
+</nav>
+   </header>
 
     {% block content %} {% endblock content %}
 
@@ -79,10 +106,12 @@ h1, h2, h3 {
     </ul>
   </footer>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
 
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-</body>
+
+
+   </body>
 </html>
 
 
