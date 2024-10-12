@@ -4,7 +4,7 @@ from backend_frontend.models import Evenement
 
 def home_view(request):
     events = Evenement.objects.all()
-    last = events[0]
+    last = Evenement.objects.last()
 
     return render(request,'backend_frontend/home.html',{'last':last})
 def evenement_list_view(request):
